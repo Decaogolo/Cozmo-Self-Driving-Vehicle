@@ -18,7 +18,7 @@ def cozmo_program(robot: cozmo.robot.Robot):
         image = enhancer.enhance(10.0)
         image = ImageOps.invert(image)
         image = image.convert(mode="1")
-        #image.save("%s.jpg" % i)
+        image.save("%s.jpg" % i)
         left_side = image.crop((0,0,(image.width/2),image.height))
         right_side = image.crop(((image.width/2),0,image.width,image.height))
         #left_side.save("left%s.jpg" % i)
@@ -35,40 +35,37 @@ def cozmo_program(robot: cozmo.robot.Robot):
         if diff < -2000:
             print("hard left")
             robot.turn_in_place(degrees(20)).wait_for_completed()
-            robot.drive_straight(distance_mm(15), speed_mmps(100), should_play_anim=False).wait_for_completed()
+            robot.drive_straight(distance_mm(10), speed_mmps(100), should_play_anim=False).wait_for_completed()
             #robot.drive_wheels(-20,10)
             
         if diff > 2000:
             print("hard right")
             robot.turn_in_place(degrees(-20)).wait_for_completed()
-            robot.drive_straight(distance_mm(15), speed_mmps(100), should_play_anim=False).wait_for_completed()
-            
+            robot.drive_straight(distance_mm(10), speed_mmps(100), should_play_anim=False).wait_for_completed()
             #robot.drive_wheels(10,-20)
         if diff < -1000 and diff >= -2000:
             print("turning left")
             robot.turn_in_place(degrees(10)).wait_for_completed()
-            robot.drive_straight(distance_mm(15), speed_mmps(100), should_play_anim=False).wait_for_completed()
-            #robot.drive_wheels(0,20)
-            
+            robot.drive_straight(distance_mm(10), speed_mmps(100), should_play_anim=False).wait_for_completed()
+            #robot.drive_wheels(0,20) 
         if diff > 1000 and diff <= 2000:
             print("turning right")
             robot.turn_in_place(degrees(-10)).wait_for_completed()
-            robot.drive_straight(distance_mm(15), speed_mmps(100), should_play_anim=False).wait_for_completed()
+            robot.drive_straight(distance_mm(10), speed_mmps(100), should_play_anim=False).wait_for_completed()
             #robot.drive_wheels(20,0)
         if diff < -500 and diff >= -1000:
             print("slight left")
             robot.turn_in_place(degrees(5)).wait_for_completed()
-            robot.drive_straight(distance_mm(15), speed_mmps(100), should_play_anim=False).wait_for_completed()
+            robot.drive_straight(distance_mm(10), speed_mmps(100), should_play_anim=False).wait_for_completed()
             #robot.drive_wheels(0,10)
         if diff > 500 and diff <= 1000:
             print("slight right")
             robot.turn_in_place(degrees(-5)).wait_for_completed()
-            robot.drive_straight(distance_mm(15), speed_mmps(100), should_play_anim=False).wait_for_completed()
+            robot.drive_straight(distance_mm(10), speed_mmps(100), should_play_anim=False).wait_for_completed()
             #robot.drive_wheels(10,0)
-            
         if diff > -500 and diff < 500:
             print("driving straight")
-            robot.drive_straight(distance_mm(30), speed_mmps(100), should_play_anim=False).wait_for_completed()
+            robot.drive_straight(distance_mm(20), speed_mmps(100), should_play_anim=False).wait_for_completed()
             #robot.drive_wheels(10,10)
         robot.set_head_angle(cozmo.robot.MIN_HEAD_ANGLE).wait_for_completed()
         #robot.drive_straight(distance_mm(50), speed_mmps(50), should_play_anim=False).wait_for_completed()
